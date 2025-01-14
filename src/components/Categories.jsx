@@ -13,7 +13,10 @@ export function Categories({ setCategories }) {
             }
         })
             .then((res) => {
-                setCategories(res.data)
+                if (Array.isArray(res.data)) {
+                    setCategories(res.data)
+                    localStorage.setItem("categories", JSON.stringify(res.data))
+                }
             })
             .catch((err) => {
                 console.log('Error al cargar los productos', err)

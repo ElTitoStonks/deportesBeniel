@@ -1,26 +1,38 @@
-
-import { useState } from 'react';
+// import { BrowserRouter } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import '../App.css'
-import { Genero } from '../components/Genero/Genero'
-import { Header } from '../components/Header/Header'
-import { Video } from '../sections/Video';
-import { GenderMan } from '../components/FilterGender/GenderMan';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRoutes } from './AppRoutes';
+import { Productos } from '../components/Productos';
+import { Categories } from '../components/Categories';
+import { BestProduct } from '../components/FilterGender/BestProduct';
+
 
 function App() {
-  const [selectedGender, setSelectedGender] = useState(null); // Estado para el género seleccionado
+  const [selectedGender, setSelectedGender] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (products && categories) setLoading(false)
+  }, [])
 
   return (
-    <main>
-      {!selectedGender && <Genero setSelectGender={setSelectedGender} />}
+    <BrowserRouter>
+      <main>
+        {loading ?
+          <h2>Cargando datos...</h2>
+          :
+          <>
+            <AppRoutes setSelectGender={setSelectedGender} />
+            <Productos setProducts={setProducts} />
+            <Categories setCategories={setCategories} />
+          </>
+        }
 
-      {selectedGender && (
-        <>
-          <Header />
-          <Video />
-          <GenderMan selectGender={selectedGender}/>
-        </>
-      )}
-    </main>
+      </main>
+    </BrowserRouter>
   )
 }
 

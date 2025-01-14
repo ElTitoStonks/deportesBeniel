@@ -1,16 +1,16 @@
 export const Gen = [
     {
         id: 1,
-        gen: 'Masculina',
+        gen: 'hombre',
         img: '/app/GeneroIMG/hombre-deporte.webp'
     },
     {
         id: 2,
-        gen: 'Femenina',
+        gen: 'mujer',
         img: '/app//GeneroIMG/mujer-deporte.webp'
     }, {
         id: 3,
-        gen: 'Joven',
+        gen: 'joven',
         img: '/app//GeneroIMG/joven-deporte.webp'
     }
 

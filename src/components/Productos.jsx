@@ -13,10 +13,12 @@ export function Productos({ setProducts }) {
             }
         })
             .then((res) => {
-                setProducts(res.data)
-            })
-            .catch((err) =>{
-                console.log('Error al cargar los productos', err)
+                if (Array.isArray(res.data)) {
+                    setProducts(res.data)
+                    localStorage.setItem("products", JSON.stringify(res.data))
+                }
+            }).catch((err) => {
+                console.log("Error al cargar los datos", err)
             })
     }, [setProducts]);
 

@@ -7,11 +7,11 @@ export function Header() {
 
     const [responsive, setResponsive] = useState(false)
 
-    
+
     return (
         <header className="flex items-center bg-[#4E6151] fixed w-full h-20 z-50">
             <h1 className="w-1/2 flex justify-center font-bebas md:text-4xl text-2xl cursor-default text-[#FAFAFA]">
-                Deportes Beniel
+                <a href="/">Deportes Beniel</a>
             </h1>
             <nav className="w-1/2 text-[#FAFAFA] mr-10 font-Nunito text-xl">
                 {/* Menú desktop */}
