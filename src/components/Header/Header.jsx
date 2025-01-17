@@ -28,7 +28,7 @@ export function Header() {
                     <MenuLogo toggleMenu={() => setResponsive(!responsive)} />
                 </div>
                 <div
-                    className={`md:hidden fixed top-0 right-0 bg-gray-50 h-screen w-1/2 flex flex-col items-center justify-center gap-10 py-10 text-black shadow-lg transition-all duration-500 ease-in-out ${responsive ? "translate-x-0" : "translate-x-full"
+                    className={`md:hidden fixed top-0 right-0 bg-gray-50 h-screen w-[70%] flex flex-col items-center justify-center gap-10 py-10 text-black shadow-lg transition-all duration-500 ease-in-out ${responsive ? "translate-x-0" : "translate-x-full"
                         }`}
                 >
                     <Cross quitMenu={() => setResponsive(!responsive)} />

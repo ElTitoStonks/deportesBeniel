@@ -9,7 +9,7 @@ export function BestProduct() {
         setBestSeller(JSON.parse(localStorage.getItem("categories")))
     }, [])
 
-    const filterBest = bestSeller.filter((b) => b.slug.includes(gender && "mas-vendido"))
+    const filterBest = bestSeller.filter((b) => b.slug.includes(`mas-vendido-${gender}`))
 
     return (
         <section className="h-[90dvh] w-full overflow-hidden">

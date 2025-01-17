@@ -29,7 +29,6 @@ export function CartLogo() {
                     <h3>Aquí irán todos los productos que se agregen al carrito</h3>
 
                 }
-                <Productos setProducts={setContent} />
             </section>
 
         </>
