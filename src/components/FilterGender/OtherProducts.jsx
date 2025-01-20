@@ -59,7 +59,10 @@ export function OtherProducts() {
                         ))
                     ))
                     :
-                    <h2>Se ha producido un error al cargar los elementos </h2>
+                    <div className="h-[50dvh] w-dvw flex justify-center items-center">
+                    <h2 className="md:text-4xl text-xl font-bebas text-center">Se ha producido un error al cargar los elementos <br />
+                        estamos trabajando en solucionarlo lo antes posible</h2>
+                </div>
                 }
             </Carousel>
 

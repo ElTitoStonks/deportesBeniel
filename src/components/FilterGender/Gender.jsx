@@ -5,7 +5,7 @@ import { BestProduct } from "./BestProduct.jsx";
 import { OtherProducts } from "./OtherProducts.jsx";
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
-import { Footer } from "../footer/Footer.jsx";
+
 
 
 export function Gender({ onSelect }) {
@@ -30,7 +30,7 @@ export function Gender({ onSelect }) {
     // Save in categories the elements of the localStorage
     const [categories, setCategories] = useState([])
 
-    console.log(categories)
+
     useEffect(() => {
         // Get categories of localStorage
         setCategories(JSON.parse(localStorage.getItem("categories")))
@@ -83,17 +83,15 @@ export function Gender({ onSelect }) {
                     ))
 
                     :
-                    <h2>Se ha producido un error al cargar los elementos </h2>
+                    <div className="h-[50dvh] w-dvw flex justify-center items-center">
+                    <h2 className="md:text-4xl text-xl font-bebas text-center">Se ha producido un error al cargar los elementos <br />
+                        estamos trabajando en solucionarlo lo antes posible</h2>
+                </div>
                 }
 
             </Carousel>
-
-
-
-
             <BestProduct />
             <OtherProducts />
-            <Footer />
         </section >
 
     )
