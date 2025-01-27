@@ -23,7 +23,6 @@ export function Productos({ setProducts }) {
 
                     ))
                     setProducts(cleanProducts)
-                    console.log("Quitamos descrip", cleanProducts)
                     localStorage.setItem("products", JSON.stringify(cleanProducts))
                 }
             }).catch((err) => {

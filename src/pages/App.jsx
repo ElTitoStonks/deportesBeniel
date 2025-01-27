@@ -5,7 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes';
 import { Productos } from '../components/Productos';
 import { Categories } from '../components/Categories';
-import { BestProduct } from '../components/FilterGender/BestProduct';
+import { Toaster } from 'sonner';
+
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Toaster expand={true} richColors/>
       <main>
         {loading ?
           <h2>Cargando datos...</h2>
