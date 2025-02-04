@@ -2,20 +2,40 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom";
 import { CartLogo } from "./Header/CartLogo";
 import { Toaster, toast } from 'sonner'
+import Carousel from "react-multi-carousel";
 
 
 
 export function Products() {
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 1,
+            slidesToSlide: 1 // optional, default to 1.
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 1,
+            slidesToSlide: 1 // optional, default to 1.
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+            slidesToSlide: 1 // optional, default to 1.
+        }
+    };
+
     const [category, setCategory] = useState([]);
     const [products, setProduct] = useState([]);
     const [carousel, setCarousel] = useState(false)
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState([]);
     const [cart, setCart] = useState(() => {
         const getCart = localStorage.getItem('cart')
         return getCart ? JSON.parse(getCart) : [];
     });
 
     const { gender, categoryName } = useParams()
+
 
     useEffect(() => {
         setProduct(JSON.parse(localStorage.getItem("products")));
@@ -29,6 +49,7 @@ export function Products() {
 
     const filterCat = category.filter((e) => e.slug.includes(gender))
     const filterProc = products.filter((p) => p.slug.includes(categoryName))
+    
 
     const handleImgClick = (imageSrc) => {
         setSelectedImage(imageSrc)
@@ -60,25 +81,39 @@ export function Products() {
                             key={p.id}
                             className="h-auto mb-5 flex flex-col md:flex-col bg-[#5E8C61] "
                         >
-                            {p.images.map((i) => (
-                                <img onClick={() => handleImgClick(i.src)} className="md:h-56 w-full md:max-h-full max-h-[50%] object-cover"
-                                    key={i.id}
-                                    src={i.src}
-                                    alt={i.alt || "Imagen del producto"} />
-                            ))}
+                            {p.images && p.images.length > 0 ? (
+                                <img
+                                    onClick={() => handleImgClick(p.images)}
+                                    className="md:h-56 w-full md:max-h-full max-h-[50%] object-cover"
+                                    src={p.images[0].src}
+                                    alt={p.images[0].alt || "Imagen del producto"}
+
+                                />
+                            ) :
+                                (<h2>No se han encontrado imagenes</h2>)
+                            }
 
                             {carousel && selectedImage && (
                                 <div
-                                    className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50"
-                                    onClick={closeCarousel}
+                                    className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center "
                                 >
-                                    {p.images.map((i) => (
-                                        <img key={i.id}
-                                            className="max-w-full max-h-full object-contain"
-                                            src={selectedImage}
-                                            alt="Imagen ampliada"
-                                        />
-                                    ))}
+                                    <svg className="absolute z-50 md:left-[70%] left-[90%] top-24 cursor-pointer" onClick={closeCarousel} xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="#ccc" d="M18.36 19.78L12 13.41l-6.36 6.37l-1.42-1.42L10.59 12L4.22 5.64l1.42-1.42L12 10.59l6.36-6.36l1.41 1.41L13.41 12l6.36 6.36z" /></svg>
+
+                                    <Carousel responsive={responsive} className="md:w-1/3 w-full h-full z-40">
+                                        {selectedImage && selectedImage.length > 0 ?
+                                            (selectedImage.map((image, index) => (
+                                                < img key={index}
+                                                    className=" object-cover w-full h-full"
+                                                    src={image.src}
+                                                    alt="Imagen ampliada"
+                                                />
+                                            ))
+
+                                            )
+                                            :
+                                            (null)
+                                        }
+                                    </Carousel>
 
                                 </div>
 

@@ -70,16 +70,14 @@ export function CartShop() {
                             <div className="h-auto w-full flex flex-col items-center justify-center border-b border-black"
                                 key={e.id}>
                                 <div className="bg-[#72BDA3] p-2 h-40 md:h-72 w-full flex overflow-hidden">
-                                    {e.images.map((i) => (
-                                        <div key={i.id}
-                                            className="w-1/3 md:w-2/3 lg:w-1/2 h-full flex justify-center items-center">
-                                            <img
-                                                src={i.src}
-                                                alt={i.alt || "Imagen de carrito"}
-                                                className="object-cover w-full h-2/3 md:w-1/2"
-                                            />
-                                        </div>
-                                    ))}
+                                    <div
+                                        className="w-1/3 md:w-2/3 lg:w-1/2 h-full flex justify-center items-center">
+                                        <img
+                                            src={e.image.src}
+                                            alt={e.image.alt || "Imagen de carrito"}
+                                            className="object-cover w-full h-2/3 md:w-1/2"
+                                        />
+                                    </div>
                                     <div className="w-2/3 p-2 md:p-8 font-Nunito">
                                         <h2 className="font-bebas md:text-4xl text-xl text-[#444444] w-full text-ellipsis">{e.name}</h2>
                                         <p className="font-sm md:text-lg">Talla: <b>M</b></p>

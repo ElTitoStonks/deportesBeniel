@@ -14,16 +14,16 @@ export function Productos({ setProducts }) {
         })
             .then((res) => {
                 if (Array.isArray(res.data)) {
-                    const cleanProducts = res.data.map((product) => (
+                    // const cleanProducts = res.data.map((product) => (
 
-                        {
-                            ...product,
-                            description: product.description.replace(/<\/?[^>]+(>|$)/g, ""),
-                        }
+                    //     {
+                    //         ...product,
+                    //         description: product.description.replace(/<\/?[^>]+(>|$)/g, ""),
+                    //     }
 
-                    ))
-                    setProducts(cleanProducts)
-                    localStorage.setItem("products", JSON.stringify(cleanProducts))
+                    // ))
+                    setProducts(res.data)
+                    localStorage.setItem("products", JSON.stringify(res.data))
                 }
             }).catch((err) => {
                 console.log("Error al cargar los datos", err)

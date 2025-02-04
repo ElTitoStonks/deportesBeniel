@@ -6,6 +6,7 @@ import { Header } from "../components/Header/Header"
 import { Footer } from "../components/footer/Footer"
 import { ProductsDetails } from "../components/ProductsDetails";
 import { CartShop } from "../components/CartShop";
+import { OtherProducts } from "../components/FilterGender/OtherProducts";
 
 
 export function AppRoutes({ setSelectGender }) {

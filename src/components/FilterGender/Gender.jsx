@@ -39,6 +39,7 @@ export function Gender({ onSelect }) {
     // Take dinamic URL
     const { gender } = useParams()
 
+
     const filterGender = gender !== undefined || gender !== null ? gender : []
 
     // Create filter for search all genders in the URL
@@ -84,9 +85,9 @@ export function Gender({ onSelect }) {
 
                     :
                     <div className="h-[50dvh] w-dvw flex justify-center items-center">
-                    <h2 className="md:text-4xl text-xl font-bebas text-center">Se ha producido un error al cargar los elementos <br />
-                        estamos trabajando en solucionarlo lo antes posible</h2>
-                </div>
+                        <h2 className="md:text-4xl text-xl font-bebas text-center">Se ha producido un error al cargar los elementos <br />
+                            estamos trabajando en solucionarlo lo antes posible</h2>
+                    </div>
                 }
 
             </Carousel>
